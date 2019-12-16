@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic-Game</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Psychic Game</h1>
+        <p>Guess what letter i'm thinking of</p>
+        <p id="win">Wins:</p>
+        <p id="losses">Losses:</p>
+        <p id="left">Guesses Left:</p>
+        <p id="Guesses">Guesses so far:</p>
+    </div>
+
+<script>
+    
+var lettersArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var winsNum = 0;
+var LossesNum = 0;
+var GuessleftNum = 9; 
+var GuessesletterArr = [];
+//var GuessedLetter;
+var winningLetter = lettersArr[Math.floor(math.random()*lettersArr.length)];
+
+function reset(){
+    GuessleftNum = 9;
+    GuessesletterArr = [];
+    winningLetter = lettersArr[Math.floor(math.random()*lettersArr.length)];
+}
+
+document.onkeyup = function(event){
+    var Guessedletter= event.key;
+    var GuessedLetter = String.fromCharCode(event.keycode).toLowerCase();
+    if(GuessesletterArr.indexof(GuessedLetter)<0 && lettersArr.indexof(GuessedLetter)>=0){
+        GuessesletterArr[GuessesletterArr.length]=GuessedLetter;
+        GuessleftNum--;
+    
+    }
+}
+
+if(winningLetter === GuessedLetter){
+    winsNum ++; 
+    reset();
+}
+
+if(GuessesletterNum ===0){
+    LossesNum ++;
+    reset();
+}
+
+$("#left").text("Guesses Left: " + GuessleftNum);
+$("#win").text("Wins: " + winsNum);
+$("#losses").text("Losses: " + lossesNum);
+$("#Guesses").text("Your Guesses So Far: " + GuessesletterArr.join(", "));
+</script>
+    
+    
+</body>
+</html>
